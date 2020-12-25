@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>
+            <%= locals.title%>
+        </title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+         <link rel="stylesheet" href="/css/home.css"> 
+    </head>
+    <body>
+<h1 id = "page-heading">
+   <i class="fas fa-address-book "></i> MY CONTACTS LIST</h1>
+        <div>
+            <ul>
+             <div class="container"  >    
+                <% for (let i of contact_list) { %> 
+                   <div class="contact"> 
+                       <div class = "details">
+                        <li>
+                            <p><%= i.name %>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                        <%= i.phone %></p></div>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    <div class="delete-button">
+                        <a href="/delete-contact/?phone=<%= i.phone %>">
+                         <div class="icons" > <i class="fas fa-window-close"></i></div>
+                        </a>
+                    </div></div>
+                </li>
+                <% } %>
+            </div>
+            </ul>
+        </div>
+
+        <form class = "myform" action="/create-contact" method="POST">
+            <input style = "width:250px;margin-left:-55px;"type="text" name="name" placeholder="Enter name" required>
+            <input style = "width:250px;" type="number" name="phone" placeholder="Enter phone" required>
+            <button style ="background-color: grey; "type="submit">Add contact</button>
+        </form>
+        <script type="text/javascript" src="/js/home.js"></script>
+    </body>
+</html>
